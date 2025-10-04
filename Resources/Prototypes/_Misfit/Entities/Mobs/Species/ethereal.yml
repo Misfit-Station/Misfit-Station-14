@@ -15,6 +15,11 @@
     spawned:
     - id: FoodMeat
       amount: 5
+  - type: Bloodstream
+    bloodReagent: LiquidElectricity
+  #- type: Damageable # currently this makes them go urist skin color????
+    #damageContainer: Biological
+    #damageModifierSet: Ethereal
   - type: HumanoidAppearance
     species: Ethereal
     hideLayersOnEquip:

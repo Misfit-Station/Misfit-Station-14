@@ -1,0 +1,8 @@
+- type: damageModifierSet
+  id: Ethereal
+  coefficients:
+    Cold: 1.2
+    Shock: 0.0
+    Blunt: 1.2
+    Slash: 1.2
+    Piercing: 1.2

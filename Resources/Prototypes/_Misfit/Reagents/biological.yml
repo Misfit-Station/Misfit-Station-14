@@ -1,0 +1,23 @@
+- type: reagent
+  id: LiquidElectricity
+  name: reagent-name-liquid-electricity
+  group: Biological
+  desc: reagent-desc-liquid-electricity
+  flavor: shocking
+  color: "#00ffff"
+  recognizable: true
+  standsout: true
+  physicalDesc: reagent-physical-desc-energetic
+  viscosity: 0.25
+  tileReactions:
+  - !type:SpillTileReaction
+  metabolisms:
+    Food:
+      effects:
+      - !type:SatiateHunger
+        factor: 1
+
+  footstepSound:
+    collection: FootstepSlime # makes sense
+    params:
+      volume: 6
