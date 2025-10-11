@@ -1,18 +1,29 @@
 - type: soundCollection
   id: LobbyMusic
   files:
-    - /Audio/Lobby/thunderdome.ogg
-    - /Audio/Lobby/absconditus.ogg
-    - /Audio/Lobby/space_asshole.ogg
-    - /Audio/Lobby/the_wizard.ogg
-    - /Audio/Lobby/endless_space.ogg
-    - /Audio/Lobby/singuloose.ogg
-    - /Audio/Lobby/comet_haley.ogg
-    - /Audio/Lobby/title2.ogg
-    - /Audio/Lobby/title3.ogg
-    - /Audio/Lobby/mod.flip-flap.ogg
-    - /Audio/Lobby/Spac_Stac.ogg
-    - /Audio/Lobby/pwmur.ogg
+    # Misfit - Commented out the majority of Wizden songs in favor of fresh songs that fit the vibe of Misfit. Space asshole is to never be uncommented.
+    #- /Audio/Lobby/thunderdome.ogg
+    #- /Audio/Lobby/absconditus.ogg
+    #- /Audio/Lobby/space_asshole.ogg
+    #- /Audio/Lobby/the_wizard.ogg
+    #- /Audio/Lobby/endless_space.ogg
+    #- /Audio/Lobby/singuloose.ogg
+    #- /Audio/Lobby/comet_haley.ogg
+    #- /Audio/Lobby/title2.ogg
+    #- /Audio/Lobby/title3.ogg
+    #- /Audio/Lobby/mod.flip-flap.ogg
+    #- /Audio/Lobby/Spac_Stac.ogg
+    #- /Audio/Lobby/pwmur.ogg
     - /Audio/Lobby/lasers_rip_apart_the_bulkhead.ogg
     - /Audio/Lobby/every_light_is_blinking_at_once.ogg
-    - /Audio/Lobby/atomicamnesiammx.ogg
+    #- /Audio/Lobby/atomicamnesiammx.ogg
+
+    # Begin Misfit additions
+    - /Audio/_Misfit/Lobby/Windows-Vista.ogg
+    - /Audio/_Misfit/Lobby/Sequence.ogg
+    - /Audio/_Misfit/Lobby/not-sure-what-is-real.ogg
+    - /Audio/_Misfit/Lobby/sugar-groove.ogg
+    - /Audio/_Misfit/Lobby/Bloodshot-Meadow.ogg
+    - /Audio/_Misfit/Lobby/Lounging-Around.ogg
+    - /Audio/_Misfit/Lobby/sentimental-experiments.ogg
+    # End Misfit additons
