@@ -2,6 +2,7 @@
   id: EtherealCrystalPolymorph
   configuration:
     entity: MobEtherealCrystal
+    forced: true
     transferName: true
     transferDamage: false
     inventory: None

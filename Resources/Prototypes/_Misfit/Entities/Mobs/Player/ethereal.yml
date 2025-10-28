@@ -7,11 +7,14 @@
 - type: entity
   save: false
   parent: [BaseStructure, MobDamageable]
+  categories: [ HideSpawnMenu ]
   id: MobEtherealCrystal
   components:
   - type: Sprite
+    noRot: true
+    loop: false
     sprite: _Misfit/Mobs/Species/Ethereal/ethereal_crystal.rsi
-    state: ethereal_crystal
+    state: ethereal_crystal_forming
   - type: MobCollision
   - type: Fixtures
     fixtures:
@@ -22,6 +25,7 @@
         density: 1000
         layer:
         - WallLayer
+  - type: Muted
   - type: EtherealCrystal
     damageOnRevive:
       types:
