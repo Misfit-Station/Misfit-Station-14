@@ -72,35 +72,45 @@ public sealed class EtherealCrystalSystem : EntitySystem
 
         foreach (var uid in shouldPolymorphUids)
         {
-            if (!TryComp<EtherealShouldCrystalComponent>(uid, out var shouldCrystal))
-                return;
-
-            shouldCrystal.IngameTimeToCrystallize = null;
-            shouldCrystal.AlreadyCrystallized = true;
-
-            var crystalUid = _polySystem.PolymorphEntity(uid, EtherealCrystalProto);
-
-            if (!TryComp<EtherealCrystalComponent>(crystalUid, out var crystalComp))
-                return;
-
-            crystalComp.IngameTimeToRevive = _gameTiming.CurTime + TimeSpan.FromSeconds(crystalComp.TimeToRevive);
+            HandleCrystallization(uid);
         }
 
         foreach (var (uid, damageSpecifier) in shouldReviveUids)
         {
-            var etherealUidUnchecked = _polySystem.Revert(uid);
-
-            if (!etherealUidUnchecked.HasValue)
-                continue;
-
-            var etherealUid = (EntityUid) etherealUidUnchecked;
-
-            if (!TryComp<DamageableComponent>(etherealUid, out var damageable))
-                return;
-
-            _rejuvenateSystem.PerformRejuvenate(etherealUid);
-
-            _damageSystem.SetDamage(etherealUid, damageable, damageSpecifier);
+            HandleRevival(uid, damageSpecifier);
         }
+    }
+
+    private void HandleCrystallization(EntityUid uid)
+    {
+        if (!TryComp<EtherealShouldCrystalComponent>(uid, out var shouldCrystal))
+            return;
+
+        shouldCrystal.IngameTimeToCrystallize = null;
+        shouldCrystal.AlreadyCrystallized = true;
+
+        var crystalUid = _polySystem.PolymorphEntity(uid, EtherealCrystalProto);
+
+        if (!TryComp<EtherealCrystalComponent>(crystalUid, out var crystalComp))
+            return;
+
+        crystalComp.IngameTimeToRevive = _gameTiming.CurTime + TimeSpan.FromSeconds(crystalComp.TimeToRevive);
+    }
+
+    private void HandleRevival(EntityUid uid, DamageSpecifier damageSpecifier)
+    {
+        var etherealUidUnchecked = _polySystem.Revert(uid);
+
+        if (!etherealUidUnchecked.HasValue)
+            return;
+
+        var etherealUid = (EntityUid) etherealUidUnchecked;
+
+        if (!TryComp<DamageableComponent>(etherealUid, out var damageable))
+            return;
+
+        _rejuvenateSystem.PerformRejuvenate(etherealUid);
+
+        _damageSystem.SetDamage(etherealUid, damageable, damageSpecifier);
     }
 }
