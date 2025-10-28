@@ -31,6 +31,7 @@
     energy: 2.5
 #    color: "#47f8ff" # color is temporarily cyan until I figure out how to make it inherit the skin tone
   - type: EtherealColor
+  - type: EtherealShouldCrystal
 
 - type: entity
   parent: BaseSpeciesDummy

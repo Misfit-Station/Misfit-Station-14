@@ -3,3 +3,26 @@
   name: Urist McZap
   parent: BaseMobEthereal
   id: MobEthereal
+
+- type: entity
+  save: false
+  parent: [BaseStructure, MobDamageable]
+  id: MobEtherealCrystal
+  components:
+  - type: Sprite
+    sprite: _Misfit/Mobs/Species/Ethereal/ethereal_crystal.rsi
+    state: ethereal_crystal
+  - type: MobCollision
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.35,-0.4,0.35,0.4"
+        density: 1000
+        layer:
+        - WallLayer
+  - type: EtherealCrystal
+    damageOnRevive:
+      types:
+        Cellular: 75

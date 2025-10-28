@@ -1,0 +1,31 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Monkestation2.0 at https://github.com/Monkestation/Monkestation2.0/blob/10bfda57b9ca32e98c8562a07766f4256411ceb3/icons/obj/ethereal_crystal.dmi",
+  "size": {
+    "x": 32,
+    "y": 40
+  },
+  "states": [
+    {
+      "name": "ethereal_crystal_shine"
+    },
+    {
+      "name": "ethereal_crystal"
+    },
+    {
+      "name": "ethereal_crystal_forming",
+      "delays": [
+        [
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.1,
+          0.4
+        ]
+      ]
+    }
+  ]
+}

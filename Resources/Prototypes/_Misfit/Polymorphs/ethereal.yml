@@ -1,0 +1,9 @@
+﻿- type: polymorph
+  id: EtherealCrystalPolymorph
+  configuration:
+    entity: MobEtherealCrystal
+    transferName: true
+    transferDamage: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: false
