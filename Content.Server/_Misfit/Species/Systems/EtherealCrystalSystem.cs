@@ -99,18 +99,13 @@ public sealed class EtherealCrystalSystem : EntitySystem
 
     private void HandleRevival(EntityUid uid, DamageSpecifier damageSpecifier)
     {
-        var etherealUidUnchecked = _polySystem.Revert(uid);
+        var etherealUid = _polySystem.Revert(uid);
 
-        if (!etherealUidUnchecked.HasValue)
+        if (!etherealUid.HasValue)
             return;
 
-        var etherealUid = (EntityUid) etherealUidUnchecked;
+        _rejuvenateSystem.PerformRejuvenate((EntityUid) etherealUid);
 
-        if (!TryComp<DamageableComponent>(etherealUid, out var damageable))
-            return;
-
-        _rejuvenateSystem.PerformRejuvenate(etherealUid);
-
-        _damageSystem.SetDamage(etherealUid, damageable, damageSpecifier);
+        _damageSystem.TryChangeDamage(etherealUid, damageSpecifier, true);
     }
 }

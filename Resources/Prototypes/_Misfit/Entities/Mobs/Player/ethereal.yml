@@ -6,25 +6,45 @@
 
 - type: entity
   save: false
-  parent: [BaseStructure, MobDamageable]
+  parent: BaseStructure
   categories: [ HideSpawnMenu ]
   id: MobEtherealCrystal
+  placement:
+    mode: SnapgridCenter
   components:
   - type: Sprite
     noRot: true
     loop: false
     sprite: _Misfit/Mobs/Species/Ethereal/ethereal_crystal.rsi
     state: ethereal_crystal_forming
-  - type: MobCollision
   - type: Fixtures
     fixtures:
       fix1:
         shape:
-          !type:PhysShapeAabb
-          bounds: "-0.35,-0.4,0.35,0.4"
-        density: 1000
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 60
+        mask:
+        - MachineMask
         layer:
-        - WallLayer
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+        - Opaque
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Glass
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:PlaySoundBehavior
+        sound:
+          collection: GlassBreak
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
   - type: Muted
   - type: EtherealCrystal
     damageOnRevive:
