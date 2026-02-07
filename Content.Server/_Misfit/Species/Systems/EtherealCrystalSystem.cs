@@ -2,6 +2,7 @@
 using Content.Shared._Misfit.Species.Components;
 using Content.Shared.Administration.Systems;
 using Content.Shared.Damage;
+using Content.Shared.Damage.Systems;
 using Content.Shared.Mobs;
 using Content.Shared.Polymorph;
 using Robust.Shared.Prototypes;
@@ -99,12 +100,12 @@ public sealed class EtherealCrystalSystem : EntitySystem
 
     private void HandleRevival(EntityUid uid, DamageSpecifier damageSpecifier)
     {
-        var etherealUid = _polySystem.Revert(uid);
+        var etherealUidUnchecked = _polySystem.Revert(uid);
 
-        if (!etherealUid.HasValue)
+        if (etherealUidUnchecked is not EntityUid etherealUid)
             return;
 
-        _rejuvenateSystem.PerformRejuvenate((EntityUid) etherealUid);
+        _rejuvenateSystem.PerformRejuvenate(etherealUid);
 
         _damageSystem.TryChangeDamage(etherealUid, damageSpecifier, true);
     }

@@ -8,7 +8,7 @@
   },
   "states": [
     {
-      "name": "ethereal_head_m",
+      "name": "head_m",
       "directions": 4,
       "delays": [
         [
@@ -34,7 +34,7 @@
       ]
     },
     {
-      "name": "ethereal_torso_m",
+      "name": "torso_m",
       "directions": 4,
       "delays": [
         [
@@ -60,7 +60,7 @@
       ]
     },
     {
-      "name": "ethereal_torso_f",
+      "name": "torso_f",
       "directions": 4,
       "delays": [
         [
@@ -86,7 +86,7 @@
       ]
     },
     {
-      "name": "ethereal_r_arm",
+      "name": "r_arm",
       "directions": 4,
       "delays": [
         [
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "name": "ethereal_l_arm",
+      "name": "l_arm",
       "directions": 4,
       "delays": [
         [
@@ -138,7 +138,7 @@
       ]
     },
     {
-      "name": "ethereal_r_hand",
+      "name": "r_hand",
       "directions": 4,
       "delays": [
         [
@@ -164,7 +164,7 @@
       ]
     },
     {
-      "name": "ethereal_l_hand",
+      "name": "l_hand",
       "directions": 4,
       "delays": [
         [
@@ -190,7 +190,7 @@
       ]
     },
     {
-      "name": "ethereal_r_leg",
+      "name": "r_leg",
       "directions": 4,
       "delays": [
         [
@@ -216,7 +216,7 @@
       ]
     },
     {
-      "name": "ethereal_l_leg",
+      "name": "l_leg",
       "directions": 4,
       "delays": [
         [
@@ -242,7 +242,7 @@
       ]
     },
     {
-      "name": "ethereal_head_f",
+      "name": "head_f",
       "directions": 4,
       "delays": [
         [
@@ -268,7 +268,7 @@
       ]
     },
 	{
-      "name": "ethereal_l_foot",
+      "name": "l_foot",
       "directions": 4,
       "delays": [
         [
@@ -294,7 +294,7 @@
       ]
     },
 	{
-      "name": "ethereal_r_foot",
+      "name": "r_foot",
       "directions": 4,
       "delays": [
         [
