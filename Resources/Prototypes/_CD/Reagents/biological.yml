@@ -8,7 +8,7 @@
   recognizable: true
   physicalDesc: reagent-physical-desc-reflective
   metabolisms:
-    Drink:
+    Bloodstream:
       effects:
       # Misfit - Change to give same effects as uncooked proteins
       - !type:Vomit
