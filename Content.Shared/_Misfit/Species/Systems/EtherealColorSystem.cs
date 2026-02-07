@@ -18,9 +18,9 @@ public sealed class EtherealColorSystem : EntitySystem
     [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
     [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
 
+    // TODO: Make all of these a part of the component PLEASE
     private static readonly FixedPoint2 TotalHealth = 200;
     private static readonly ProtoId<OrganCategoryPrototype> Head = "Head";
-
     private static readonly HumanoidVisualLayers[] LayersToForce =
         [HumanoidVisualLayers.Hair, HumanoidVisualLayers.FacialHair];
 
