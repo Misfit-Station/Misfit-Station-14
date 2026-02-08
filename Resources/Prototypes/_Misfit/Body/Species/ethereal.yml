@@ -90,7 +90,10 @@
     - id: FoodMeat
       amount: 5
   - type: Bloodstream
-    bloodReagent: LiquidElectricity
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: LiquidElectricity
+        Quantity: 300
   - type: Damageable # currently this makes them go urist skin color????
     damageContainer: Biological
     damageModifierSet: Ethereal
