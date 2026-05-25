@@ -71,8 +71,9 @@ public sealed class EtherealColorSystem : EntitySystem
             if (!headMarkings.TryGetValue(layer, out var hairMarkings))
                 continue;
 
-            foreach (var marking in hairMarkings)
-                marking.SetColor(newColor);
+            var newMarkings = hairMarkings.Select(marking => marking.WithColor(newColor)).ToList();
+
+            headMarkings[layer] = newMarkings;
         }
 
         _visualBody.ApplyMarkings(uid, markings);
