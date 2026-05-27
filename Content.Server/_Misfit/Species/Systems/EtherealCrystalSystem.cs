@@ -13,14 +13,14 @@ namespace Content.Shared._Misfit.Species.Systems;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class EtherealCrystalSystem : EntitySystem
+public sealed partial class EtherealCrystalSystem : EntitySystem
 {
     private static readonly ProtoId<PolymorphPrototype> EtherealCrystalProto = "EtherealCrystalPolymorph";
 
-    [Dependency] private readonly DamageableSystem _damageSystem = default!;
-    [Dependency] private readonly PolymorphSystem _polySystem = default!;
-    [Dependency] private readonly RejuvenateSystem _rejuvenateSystem = default!;
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
+    [Dependency] private DamageableSystem _damageSystem = default!;
+    [Dependency] private PolymorphSystem _polySystem = default!;
+    [Dependency] private RejuvenateSystem _rejuvenateSystem = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
 
     /// <inheritdoc/>
     public override void Initialize()

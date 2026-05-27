@@ -13,10 +13,11 @@ namespace Content.Shared._Misfit.Species.Systems;
 /// <summary>
 /// This handles...
 /// </summary>
-public sealed class EtherealColorSystem : EntitySystem
+public sealed partial class EtherealColorSystem : EntitySystem
 {
-    [Dependency] private readonly SharedPointLightSystem _pointLight = default!;
-    [Dependency] private readonly SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private SharedPointLightSystem _pointLight = default!;
+    [Dependency] private SharedVisualBodySystem _visualBody = default!;
+    [Dependency] private DamageableSystem _damageable = default!;
 
     // TODO: Make all of these a part of the component PLEASE
     private static readonly FixedPoint2 TotalHealth = 200;
@@ -52,7 +53,8 @@ public sealed class EtherealColorSystem : EntitySystem
 
     private void OnDamageChanged(EntityUid uid, EtherealColorComponent component, DamageChangedEvent args)
     {
-        var scalar = Math.Clamp(((TotalHealth - args.Damageable.TotalDamage) / TotalHealth).Float(), 0, 1);
+        // Note from Falcon - GetTotalDamage is deprecated, this will likely need to be refactored more in the future
+        var scalar = Math.Clamp(((TotalHealth - _damageable.GetTotalDamage((uid, args.Damageable))) / TotalHealth).Float(), 0, 1);
         Color newColor = new(Color.White.RGBA - (Color.White.RGBA - component.InitialColor.RGBA) * scalar);
 
         if (!_visualBody.TryGatherMarkingsData(uid, null, out var profiles, out _, out var markings))

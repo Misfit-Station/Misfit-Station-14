@@ -13,10 +13,10 @@ using Robust.Shared.Random;
 
 namespace Content.Server.StationEvents.Events;
 
-public sealed class IonStormRule : StationEventSystem<IonStormRuleComponent>
+public sealed partial class IonStormRule : StationEventSystem<IonStormRuleComponent>
 {
-    [Dependency] private readonly IonStormSystem _ionStorm = default!;
-    [Dependency] private readonly IChatManager _chatManager = default!; // CD - Synth Trait
+    [Dependency] private IonStormSystem _ionStorm = default!;
+    [Dependency] private IChatManager _chatManager = default!; // CD - Synth Trait
 
     protected override void Started(EntityUid uid, IonStormRuleComponent comp, GameRuleComponent gameRule, GameRuleStartedEvent args)
     {

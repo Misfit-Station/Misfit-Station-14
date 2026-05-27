@@ -125,9 +125,8 @@ marking-VulpTailVulpFade-vulp = Vulpkanin tail (Base)
 marking-VulpTailVulpFade-vulp-fade = Vulpkanin tail (Fade)
 marking-VulpTailVulpFade = Vulpkanin (Fade)
 
-# Begin Misfit tail additions
-marking-VulpTailCoyote-coyote = Coyote tail (Base)
-marking-VulpTailCoyote = Coyote
+marking-VulpTailCoyote-coyote = Coyote Tail (Base)
+marking-VulpTailCoyote = Vulpkanin Coyote
 
 marking-VulpTailFox-fox = Fox tail (Base)
 marking-VulpTailFox-fox-tip = Fox tail (Tip)
