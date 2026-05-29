@@ -75,11 +75,10 @@
 - type: entity
   parent:
   - AppearanceEthereal
-  - BaseSpeciesMobOrganic
+  - BaseSpeciesMobOrganicNoHunger
   id: MobEthereal
   name: Urist McZap
   components:
-  - type: Hunger
   - type: Icon
     sprite: _Misfit/Mobs/Species/Ethereal/parts.rsi
     state: full
