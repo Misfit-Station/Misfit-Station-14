@@ -42,6 +42,11 @@ namespace Content.Shared.Humanoid
                 default:
                     return Loc.GetString("namepreset-firstlast",
                         ("first", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto)));
+                // Start Misfit - Add MKCs
+                case SpeciesNaming.FirstDashLast:
+                    return Loc.GetString("namepreset-firstdashlast",
+                        ("first1", GetFirstName(speciesProto, gender)), ("last", GetLastName(speciesProto)));
+                // End Misfit
             }
         }
 

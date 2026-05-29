@@ -3,6 +3,8 @@
   name: trait-synth-name
   description: trait-synth-desc
   category: Quirks
+  speciesBlacklist:
+    - MKC
   components:
     - type: Synth
     - type: IonStormNotifier

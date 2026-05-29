@@ -133,6 +133,10 @@
       guides:
       - Cyborgs
       - Robotics
+    # begin starcup: added for MKCs
+    - type: Organ
+      category: Brain
+    # end starcup
     - type: ChangeVoiceInContainer
       whitelist:
         components:

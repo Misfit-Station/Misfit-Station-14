@@ -146,7 +146,7 @@
     speechSounds: Borg
   - type: Vocal
     sounds:
-      Unsexed: UnisexSilicon
+      Unsexed: HumanoidSilicon # starcup: silicon emotes
     wilhelmProbability: 0
   - type: DamagedSiliconAccent
   - type: UnblockableSpeech

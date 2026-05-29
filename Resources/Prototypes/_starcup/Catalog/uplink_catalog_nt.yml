@@ -1,0 +1,35 @@
+- type: listing
+  id: UplinkOverclockInjectorNT
+  name: uplink-overclock-injector-name
+  description: uplink-overclock-injector-desc
+  productEntity: OverclockInjectorNT
+  discountCategory: usualDiscounts
+  cost:
+    Telecrystal: 2
+  categories:
+  - UplinkChemicals # Misfit - UplinkChemicalsNT>UplinkChemicals
+
+- type: listing
+  abstract: true # Misfit - Disable this one due to missing StimkitFilledNT
+  id: UplinkStimkitNT
+  name: uplink-stimkit-name
+  description: uplink-stimkit-desc
+#  productEntity: StimkitFilledNT
+  discountCategory: rareDiscounts
+  discountDownTo:
+    Telecrystal: 3
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkChemicals # Misfit - UplinkChemicalsNT>UplinkChemicals
+
+- type: listing
+  id: UplinkOverclockKitNT
+  name: uplink-overclock-kit-name
+  description: uplink-overclock-kit-desc
+  productEntity: OverclockKitFilledNT
+  discountCategory: rareDiscounts
+  cost:
+    Telecrystal: 5
+  categories:
+  - UplinkChemicals # Misfit - UplinkChemicalsNT>UplinkChemicals

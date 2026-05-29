@@ -30,6 +30,8 @@
   name: trait-narcolepsy-name
   description: trait-narcolepsy-desc
   category: Disabilities
+  speciesBlacklist:
+    - MKC
   components:
     - type: Narcolepsy
       maxTimeBetweenIncidents: 600

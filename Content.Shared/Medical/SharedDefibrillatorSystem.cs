@@ -203,6 +203,13 @@ public abstract partial class SharedDefibrillatorSystem : EntitySystem
             _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString(unrevivable.ReasonMessage),
                 InGameICChatType.Speak, true);
         }
+        // begin starcup: damage container check
+        else if (TryComp<InjurableComponent>(target, out var injurable) && injurable.DamageContainer != ent.Comp.DamageContainer) // Misfit - Damageable>InjurableComponent
+        {
+            _chat.TrySendInGameICMessage(ent.Owner, Loc.GetString("defibrillator-wrong-damage-container"),
+                InGameICChatType.Speak, true);
+        }
+        // end starcup
         else
         {
             if (_mobState.IsDead(target, targetMobState))

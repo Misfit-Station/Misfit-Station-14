@@ -1,0 +1,10 @@
+- type: cargoProduct
+  abstract: true # Misfit - Missing proto
+  id: SiliconRepairCrate
+  icon:
+    sprite: _starcup/Objects/Specific/Robotics/silicon_medkit.rsi
+    state: siliconkit
+#  product: CrateSiliconRepair
+  cost: 600
+  category: Science
+  group: market

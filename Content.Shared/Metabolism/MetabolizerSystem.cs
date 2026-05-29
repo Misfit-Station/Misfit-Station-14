@@ -143,6 +143,12 @@ public sealed partial class MetabolizerSystem : EntitySystem
         var ev = new MetabolismExclusionEvent();
         RaiseLocalEvent(solutionOwner.Value, ref ev);
 
+        // begin starcup: collect whitelisted reagents for filtering
+        Entity<MetabolizerComponent> metabolizer = (ent.Owner, ent.Comp1);
+        var evWhitelist = new MetabolismWhitelistEvent();
+        RaiseLocalEvent(metabolizer, ref evWhitelist);
+        // end starcup
+
         // randomize the reagent list so we don't have any weird quirks
         // like alphabetical order or insertion order mattering for processing
         var rand = SharedRandomExtensions.PredictedRandom(_gameTiming, GetNetEntity(ent), GetNetEntity(solutionOwner));
@@ -159,6 +165,14 @@ public sealed partial class MetabolizerSystem : EntitySystem
             // Skip blood reagents
             if (ev.Reagents.Contains(reagent))
                 continue;
+
+            // begin starcup: metabolizer whitelist
+            if (evWhitelist.Reagents.Count > 0)
+            {
+                if (!evWhitelist.Reagents.Contains(proto))
+                    continue;
+            }
+            // end starcup
 
             if (proto.Metabolisms is null || !proto.Metabolisms.Metabolisms.TryGetValue(stage, out var entry))
             {

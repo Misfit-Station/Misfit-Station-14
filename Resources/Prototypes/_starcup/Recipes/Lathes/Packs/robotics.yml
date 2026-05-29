@@ -1,0 +1,11 @@
+## Static
+
+- type: latheRecipePack
+  id: RoboticsStarcupStatic
+  recipes:
+  - RepairSpray
+  - ThermalPaste
+  - DefrostPouch
+  - SpliceKit
+  - Oilpack
+  - MedkitSilicon
