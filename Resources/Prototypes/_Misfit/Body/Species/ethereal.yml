@@ -94,9 +94,23 @@
       reagents:
       - ReagentId: LiquidElectricity
         Quantity: 300
-  - type: Damageable # currently this makes them go urist skin color????
-    damageContainer: Biological
-    damageModifierSet: Ethereal
+    # Ethereals technically have human flat 1.0 damage coefficients, their resistance is handled through here.
+  - type: ScalingResistance
+    startingDamageModifiers:
+      coefficients:
+        Cold: 1.2
+        Shock: 0.0
+        Blunt: 1.0
+        Slash: 1.2
+        Piercing: 1.2
+    endingDamageModifiers:
+      coefficients:
+        Cold: 1.2
+        Shock: 0.0
+        Blunt: 1.2
+        Slash: 1.2
+        Piercing: 1.2
+
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
