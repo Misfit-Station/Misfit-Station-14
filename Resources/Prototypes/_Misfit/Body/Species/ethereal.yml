@@ -271,3 +271,13 @@
     damageOnRevive:
       types:
         Cellular: 75
+  - type: EntityStorage
+    whitelist:
+      components:
+      - EtherealShouldCrystal
+  - type: Lock
+    showExamine: false
+    showLockVerbs: false
+    unlockOnClick: false
+    unlockingSound: null
+    lockingSound: null
