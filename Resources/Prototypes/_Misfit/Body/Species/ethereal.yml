@@ -135,7 +135,7 @@
   abstract: true
   components:
   - type: Metabolizer
-    metabolizerTypes: [ Slime ] # TODO: Make Ethereal Metabolizer :)
+    metabolizerTypes: [ Ethereal, Slime ]
 
 - type: entity
   parent: OrganEthereal
@@ -216,7 +216,6 @@
   - type: Stomach
   - type: Metabolizer
     maxReagents: 6
-    metabolizerTypes: [ Slime ]
     stages: [ Digestion, Bloodstream, Metabolites ]
   - type: Battery
     maxCharge: 1920
