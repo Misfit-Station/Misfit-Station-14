@@ -2,9 +2,9 @@ using Content.Shared.Body.Events;
 using Content.Shared.Gibbing;
 using Content.Shared.Humanoid;
 using Content.Shared.Medical;
+using Content.Shared.Movement.Systems; // starcup
+using Content.Shared.Verbs; // starcup
 using JetBrains.Annotations;
-using Content.Shared.Movement.Systems;
-using Content.Shared.Verbs;
 using Robust.Shared.Player;
 
 namespace Content.Shared.Body;
@@ -29,7 +29,6 @@ public sealed partial class BodySystem
         SubscribeLocalEvent<BodyComponent, RefreshMovementSpeedModifiersEvent>(RelayBodyEvent);
         // end starcup
     }
-
 
     private void RefRelayBodyEvent<T>(EntityUid uid, BodyComponent component, ref T args) where T : struct
     {
