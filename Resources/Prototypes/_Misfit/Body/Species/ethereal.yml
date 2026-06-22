@@ -109,7 +109,6 @@
         Blunt: 1.2
         Slash: 1.2
         Piercing: 1.2
-
   - type: DamageVisuals
     damageOverlayGroups:
       Brute:
@@ -219,6 +218,10 @@
     maxReagents: 6
     metabolizerTypes: [ Slime ]
     stages: [ Digestion, Bloodstream, Metabolites ]
+  - type: Battery
+    maxCharge: 1920
+    startingCharge: 1920
+  - type: PowerCore
 
 - type: entity
   parent: [ OrganBaseLungs, OrganEtherealInternal, OrganEtherealMetabolizer ]
