@@ -169,6 +169,17 @@
       - !type:Electrocute
         siemensCoefficient: 0.5
         probability: 0.5
+        # Misfit Start - Licoxide charges ethereals
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Ethereal ]
+          inverted: true
+      - !type:ChangePower
+        amount: 100
+        conditions:
+        - !type:MetabolizerTypeCondition
+          type: [ Ethereal ]
+        # Misfit End
 
 - type: reagent
   id: Razorium
