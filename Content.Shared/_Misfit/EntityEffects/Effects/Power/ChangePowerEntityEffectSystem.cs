@@ -1,8 +1,5 @@
 using Content.Shared.Body;
-using Content.Shared.Body.Components;
-using Content.Shared.Body.Systems;
 using Content.Shared.EntityEffects;
-using Content.Shared.EntityEffects.Effects.Body;
 using Content.Shared.Power.Components;
 using Content.Shared.Power.EntitySystems;
 using Robust.Shared.Prototypes;
@@ -23,7 +20,7 @@ public sealed partial class ChangePowerEntityEffectSystem : EntityEffectSystem<B
         base.Initialize();
 
         SubscribeLocalEvent<BodyComponent, OrganChangePowerEvent>(_body.RelayEvent);
-        SubscribeLocalEvent<BatteryComponent, BodyRelayedEvent<OrganChangePowerEvent>>(OnOrganEvent);
+        SubscribeLocalEvent<BatteryComponent, BodyRelayedEvent<OrganChangePowerEvent>>(OnChangePowerOrgan);
     }
 
     protected override void Effect(Entity<BodyComponent> entity, ref EntityEffectEvent<ChangePower> args)
@@ -37,7 +34,7 @@ public sealed partial class ChangePowerEntityEffectSystem : EntityEffectSystem<B
         _battery.ChangeCharge((entity, batteryComponent), ev.Amount);
     }
 
-    private void OnOrganEvent(Entity<BatteryComponent> ent, ref BodyRelayedEvent<OrganChangePowerEvent> args)
+    private void OnChangePowerOrgan(Entity<BatteryComponent> ent, ref BodyRelayedEvent<OrganChangePowerEvent> args)
     {
         _battery.ChangeCharge(ent.AsNullable(), args.Args.Amount);
     }
@@ -53,7 +50,7 @@ public sealed partial class ChangePower : EntityEffectBase<ChangePower>
     public float Amount = 1f;
 
     public override string EntityEffectGuidebookText(IPrototypeManager prototype, IEntitySystemManager entSys)
-        => Loc.GetString("entity-effect-guidebook-modify-bleed-amount", ("chance", Probability), ("deltasign", MathF.Sign(Amount)));
+        => Loc.GetString("entity-effect-guidebook-modify-power-amount", ("chance", Probability), ("deltasign", MathF.Sign(Amount)));
 }
 
 [ByRefEvent]

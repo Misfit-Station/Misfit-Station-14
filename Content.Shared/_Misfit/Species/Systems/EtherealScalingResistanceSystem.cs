@@ -5,21 +5,25 @@ using Content.Shared.FixedPoint;
 
 namespace Content.Shared._Misfit.Species.Systems;
 
-public partial class ScalingResistanceSystem : EntitySystem
+public sealed partial class EtherealScalingResistanceSystem : EntitySystem
 {
-    [Dependency] private DamageableSystem _damageable = default!;
+    [Dependency] private EtherealPowerSystem _ethereal = default!;
+
+    private static readonly float EtherealMaxCharge = 1920f;
 
     public override void Initialize()
     {
         base.Initialize();
 
-        SubscribeLocalEvent<ScalingResistanceComponent, DamageModifyEvent>(OnDamageModify);
-
+        SubscribeLocalEvent<EtherealScalingResistanceComponent, DamageModifyEvent>(OnDamageModify);
     }
-    private void OnDamageModify(EntityUid uid, ScalingResistanceComponent component, DamageModifyEvent args)
-    {
-        var scalar = Math.Clamp((_damageable.GetTotalDamage(uid) / component.DamageForMaximumResistance).Float(), 0, 1);
 
+    private void OnDamageModify(Entity<EtherealScalingResistanceComponent> ent, ref DamageModifyEvent args)
+    {
+        var charge = _ethereal.GetOrganPower(ent.Owner);
+        var chargeDifference = EtherealMaxCharge - ent.Comp.ChargeForEndingResistance;
+
+        var scalar = Math.Clamp((charge - ent.Comp.ChargeForEndingResistance) / chargeDifference, 0, 1);
 
         DamageSpecifier newDamage = new();
         newDamage.DamageDict.EnsureCapacity(args.Damage.DamageDict.Count);
@@ -37,7 +41,7 @@ public partial class ScalingResistanceSystem : EntitySystem
 
             float newValue = value.Float();
 
-            if (component.EndingDamageModifiers.Coefficients.TryGetValue(key, out var coefficient) && component.StartingDamageModifiers.Coefficients.TryGetValue(key, out var startCoefficient))
+            if (ent.Comp.EndingDamageResistance.Coefficients.TryGetValue(key, out var coefficient) && ent.Comp.StartingDamageResistance.Coefficients.TryGetValue(key, out var startCoefficient))
             {
                 var difference = coefficient - startCoefficient;
                 newValue *= startCoefficient + difference * scalar;
@@ -49,5 +53,4 @@ public partial class ScalingResistanceSystem : EntitySystem
 
         args.Damage = newDamage;
     }
-
 }

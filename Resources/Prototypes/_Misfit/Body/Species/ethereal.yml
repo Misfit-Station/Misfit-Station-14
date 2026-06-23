@@ -94,19 +94,19 @@
       - ReagentId: LiquidElectricity
         Quantity: 300
     # Ethereals technically have human flat 1.0 damage coefficients, their resistance is handled through here.
-  - type: ScalingResistance
-    startingDamageModifiers:
-      coefficients:
-        Cold: 1.2
-        Shock: 0.0
-        Blunt: 1.0
-        Slash: 1.2
-        Piercing: 1.2
-    endingDamageModifiers:
+  - type: EtherealScalingResistance
+    startingDamageResistance:
       coefficients:
         Cold: 1.2
         Shock: 0.0
         Blunt: 1.2
+        Slash: 1.2
+        Piercing: 1.2
+    endingDamageResistance:
+      coefficients: # We only need the ones we change
+        Cold: 1.2
+        Shock: 0.0
+        Blunt: 1.0
         Slash: 1.2
         Piercing: 1.2
   - type: DamageVisuals
