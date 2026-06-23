@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "license": "CC-BY-SA-3.0",
+  "copyright": "Taken from Monkestation2.0 at https://github.com/KittyNoodle/Monkestation2.0/blob/34ec6a270acaf37b449ac1fda96ca2338bb3da44/monkestation/icons/mob/species/ethereal/ethereal_horns.dmi , edited by Zephyrpak for Misfit Station",
+  "size": {
+    "x": 32,
+    "y": 48
+  },
+  "states": [
+    {
+      "name": "horns_short",
+      "directions": 4
+    },
+    {
+      "name": "horns_helm",
+      "directions": 4
+    },
+    {
+      "name": "horns_lunar",
+      "directions": 4
+    },
+    {
+      "name": "horns_inward",
+      "directions": 4
+    },
+    {
+      "name": "horns_majesty",
+      "directions": 4
+    },
+    {
+      "name": "horns_clipped",
+      "directions": 4
+    },
+    {
+      "name": "horns_sharp",
+      "directions": 4
+    }
+  ]
+}

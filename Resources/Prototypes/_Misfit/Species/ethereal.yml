@@ -1,0 +1,8 @@
+- type: species
+  id: Ethereal
+  name: species-name-ethereal
+  roundStart: true
+  prototype: MobEthereal
+  defaultSkinTone: "#ffffff"
+  dollPrototype: AppearanceEthereal
+  skinColoration: Hues

@@ -1,0 +1,14 @@
+﻿- type: polymorph
+  id: EtherealCrystalPolymorph
+  configuration:
+    entity: MobEtherealCrystal
+    forced: true
+    transferName: true
+    transferDamage: false
+    inventory: None
+    revertOnDeath: true
+    revertOnCrit: false
+    polymorphSound: !type:SoundPathSpecifier
+      path: /Audio/Effects/teleport_arrival.ogg
+    exitPolymorphSound: !type:SoundCollectionSpecifier
+      collection: GlassBreak

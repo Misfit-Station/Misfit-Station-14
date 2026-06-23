@@ -1,0 +1,285 @@
+﻿- type: markingsGroup
+  parent: Undergarments
+  id: Ethereal
+  limits:
+    enum.HumanoidVisualLayers.Hair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.FacialHair:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.Chest:
+      limit: 2
+      required: false
+    enum.HumanoidVisualLayers.LArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RArm:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RHand:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RLeg:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.LFoot:
+      limit: 1
+      required: false
+    enum.HumanoidVisualLayers.RFoot:
+      limit: 1
+      required: false
+  appearances:
+    enum.HumanoidVisualLayers.Hair:
+      matchSkin: true
+    enum.HumanoidVisualLayers.FacialHair:
+      matchSkin: true
+
+- type: entity
+  parent: AppearanceHuman
+  id: AppearanceEthereal
+  name: ethereal appearance
+  components:
+  - type: Inventory
+    femaleDisplacements:
+      jumpsuit:
+        sizeMaps:
+          32:
+            sprite: Mobs/Species/Human/displacement.rsi
+            state: jumpsuit-female
+  - type: InitialBody
+    organs:
+      Torso: OrganEtherealTorso
+      Head: OrganEtherealHead
+      ArmLeft: OrganEtherealArmLeft
+      ArmRight: OrganEtherealArmRight
+      HandRight: OrganEtherealHandRight
+      HandLeft: OrganEtherealHandLeft
+      LegLeft: OrganEtherealLegLeft
+      LegRight: OrganEtherealLegRight
+      FootLeft: OrganEtherealFootLeft
+      FootRight: OrganEtherealFootRight
+      Brain: OrganEtherealCore
+      Eyes: OrganHumanEyes
+      Lungs: OrganEtherealLungs
+  - type: HumanoidProfile
+    species: Ethereal
+
+
+- type: entity
+  parent:
+  - AppearanceEthereal
+  - BaseSpeciesMobOrganicNoHunger
+  id: MobEthereal
+  name: Urist McZap
+  components:
+  - type: Icon
+    sprite: _Misfit/Mobs/Species/Ethereal/parts.rsi
+    state: full
+  - type: Thirst
+  - type: Butcherable
+    butcheringType: Spike
+    spawned:
+    - id: FoodMeat
+      amount: 5
+  - type: Bloodstream
+    bloodReferenceSolution:
+      reagents:
+      - ReagentId: LiquidElectricity
+        Quantity: 300
+    # Ethereals technically have human flat 1.0 damage coefficients, their resistance is handled through here.
+  - type: EtherealScalingDamage
+    startingDamageModifier:
+      coefficients:
+        Cold: 1.2
+        Shock: 0.0
+        Blunt: 1.0
+        Slash: 1.0
+        Piercing: 1.0
+    endingDamageModifier:
+      coefficients: # We only need the ones we change
+        Cold: 1.2
+        Shock: 0.0
+        Blunt: 1.2
+        Slash: 1.2
+        Piercing: 1.2
+  - type: DamageVisuals
+    damageOverlayGroups:
+      Brute:
+        sprite: Mobs/Effects/brute_damage.rsi
+        color: "#ffffff"
+      Burn:
+        sprite: Mobs/Effects/burn_damage.rsi
+  - type: Inventory
+  - type: PointLight
+    radius: 2
+    energy: 2.5
+  #    color: "#47f8ff" # color is temporarily cyan until I figure out how to make it inherit the skin tone
+  - type: EtherealColor
+  - type: EtherealShouldCrystal
+
+- type: entity
+  parent: OrganBase
+  id: OrganEthereal
+  abstract: true
+  suffix: ethereal
+
+- type: entity
+  id: OrganEtherealMetabolizer
+  abstract: true
+  components:
+  - type: Metabolizer
+    metabolizerTypes: [ Ethereal, Slime ]
+
+- type: entity
+  parent: OrganEthereal
+  id: OrganEtherealInternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: Mobs/Species/Slime/organs.rsi
+
+- type: entity
+  parent: OrganEthereal
+  id: OrganEtherealExternal
+  abstract: true
+  components:
+  - type: Sprite
+    sprite: _Misfit/Mobs/Species/Ethereal/parts.rsi
+  - type: VisualOrgan
+    data:
+      sprite: _Misfit/Mobs/Species/Ethereal/parts.rsi
+  - type: VisualOrganMarkings
+    markingData:
+      group: Ethereal
+
+- type: entity
+  parent: [ OrganBaseTorsoSexed, OrganBaseTorso, OrganEtherealExternal ]
+  id: OrganEtherealTorso
+
+- type: entity
+  parent: [ OrganBaseHeadSexed, OrganBaseHead, OrganEtherealExternal ]
+  id: OrganEtherealHead
+  components:
+  - type: VisualOrganMarkings
+    hideableLayers:
+    - enum.HumanoidVisualLayers.Hair
+    - enum.HumanoidVisualLayers.Snout
+
+- type: entity
+  parent: [ OrganBaseArmLeft, OrganEtherealExternal ]
+  id: OrganEtherealArmLeft
+
+- type: entity
+  parent: [ OrganBaseArmRight, OrganEtherealExternal ]
+  id: OrganEtherealArmRight
+
+- type: entity
+  parent: [ OrganBaseHandLeft, OrganEtherealExternal ]
+  id: OrganEtherealHandLeft
+
+- type: entity
+  parent: [ OrganBaseHandRight, OrganEtherealExternal ]
+  id: OrganEtherealHandRight
+
+- type: entity
+  parent: [ OrganBaseLegLeft, OrganEtherealExternal ]
+  id: OrganEtherealLegLeft
+
+- type: entity
+  parent: [ OrganBaseLegRight, OrganEtherealExternal ]
+  id: OrganEtherealLegRight
+
+- type: entity
+  parent: [ OrganBaseFootLeft, OrganEtherealExternal ]
+  id: OrganEtherealFootLeft
+
+- type: entity
+  parent: [ OrganBaseFootRight, OrganEtherealExternal ]
+  id: OrganEtherealFootRight
+
+- type: entity
+  parent: [ OrganBaseBrain, OrganEtherealInternal, OrganEtherealMetabolizer ]
+  id: OrganEtherealCore
+  name: ethereal core
+  components:
+  - type: SolutionContainerManager
+    solutions:
+      stomach:
+        maxVol: 50.0
+  - type: Stomach
+  - type: Metabolizer
+    maxReagents: 6
+    stages: [ Digestion, Bloodstream, Metabolites ]
+  - type: Battery
+    maxCharge: 1920
+    startingCharge: 1920
+  - type: PowerCore
+
+- type: entity
+  parent: [ OrganBaseLungs, OrganEtherealInternal, OrganEtherealMetabolizer ]
+  id: OrganEtherealLungs
+  name: ethereal lungs
+  components:
+  - type: Lung
+    alert: LowNitrogen
+
+- type: entity
+  save: false
+  parent: BaseStructure
+  categories: [ HideSpawnMenu ]
+  id: MobEtherealCrystal
+  placement:
+    mode: SnapgridCenter
+  components:
+  - type: Sprite
+    noRot: true
+    loop: false
+    sprite: _Misfit/Mobs/Species/Ethereal/ethereal_crystal.rsi
+    state: ethereal_crystal_forming
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+          radius: 0.45
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+        - BulletImpassable
+        - Opaque
+  - type: Damageable
+    damageContainer: StructuralInorganic
+    damageModifierSet: Glass
+  - type: Destructible
+    thresholds:
+    - trigger:
+        !type:DamageTrigger
+        damage: 100
+      behaviors:
+      - !type:DoActsBehavior
+        acts: [ "Destruction" ]
+  - type: Muted
+  - type: EtherealCrystal
+    damageOnRevive:
+      types:
+        Cellular: 75
+  - type: EntityStorage
+    whitelist:
+      components:
+      - EtherealShouldCrystal
+  - type: Lock
+    showExamine: false
+    showLockVerbs: false
+    unlockOnClick: false
+    unlockingSound: null
+    lockingSound: null

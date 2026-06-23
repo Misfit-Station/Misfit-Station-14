@@ -160,16 +160,22 @@
 
 - type: entity
   abstract: true
+  parent: BaseSpeciesMobOrganicNoHunger
+  id: BaseSpeciesMobOrganic
+  components:
+  - type: Hunger
+
+- type: entity
+  abstract: true
   parent:
   - MobBloodstream
   - MobRespirator
   - MobAtmosStandard
   - MobFlammable
   - BaseSpeciesMob
-  id: BaseSpeciesMobOrganic
+  id: BaseSpeciesMobOrganicNoHunger
   save: false
   components:
-  - type: Hunger
   - type: Thirst
   - type: Barotrauma
     damage:
@@ -228,3 +234,4 @@
   - type: FireVisuals
     alternateState: Standing
   - type: StunVisuals
+
