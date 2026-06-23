@@ -5,7 +5,7 @@ using Content.Shared.FixedPoint;
 
 namespace Content.Shared._Misfit.Species.Systems;
 
-public sealed partial class EtherealScalingResistanceSystem : EntitySystem
+public sealed partial class EtherealScalingDamageSystem : EntitySystem
 {
     [Dependency] private EtherealPowerSystem _ethereal = default!;
 
@@ -15,15 +15,15 @@ public sealed partial class EtherealScalingResistanceSystem : EntitySystem
     {
         base.Initialize();
 
-        SubscribeLocalEvent<EtherealScalingResistanceComponent, DamageModifyEvent>(OnDamageModify);
+        SubscribeLocalEvent<EtherealScalingDamageComponent, DamageModifyEvent>(OnDamageModify);
     }
 
-    private void OnDamageModify(Entity<EtherealScalingResistanceComponent> ent, ref DamageModifyEvent args)
+    private void OnDamageModify(Entity<EtherealScalingDamageComponent> ent, ref DamageModifyEvent args)
     {
         var charge = _ethereal.GetOrganPower(ent.Owner);
-        var chargeDifference = EtherealMaxCharge - ent.Comp.ChargeForEndingResistance;
+        var chargeDifference = EtherealMaxCharge - ent.Comp.ChargeForEndingModifier;
 
-        var scalar = Math.Clamp((charge - ent.Comp.ChargeForEndingResistance) / chargeDifference, 0, 1);
+        var scalar = Math.Clamp((charge - ent.Comp.ChargeForEndingModifier) / chargeDifference, 0, 1);
 
         DamageSpecifier newDamage = new();
         newDamage.DamageDict.EnsureCapacity(args.Damage.DamageDict.Count);
@@ -41,10 +41,10 @@ public sealed partial class EtherealScalingResistanceSystem : EntitySystem
 
             float newValue = value.Float();
 
-            if (ent.Comp.EndingDamageResistance.Coefficients.TryGetValue(key, out var coefficient) && ent.Comp.StartingDamageResistance.Coefficients.TryGetValue(key, out var startCoefficient))
+            if (ent.Comp.EndingDamageModifier.Coefficients.TryGetValue(key, out var coefficient) && ent.Comp.StartingDamageModifier.Coefficients.TryGetValue(key, out var startCoefficient))
             {
                 var difference = coefficient - startCoefficient;
-                newValue *= startCoefficient + difference * scalar;
+                newValue *= startCoefficient + difference * (1 - scalar);
             }
 
             if (newValue != 0)
